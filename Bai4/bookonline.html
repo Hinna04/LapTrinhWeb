@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Books Online</title>
+        <style type="text/css">
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                margin: 0;
+                padding: 0;
+                font-family: Arial;
+            }
+            #header{
+                color: #fff;
+                background-color: rgb(159, 101, 185);
+                padding: 14px;
+            }
+            #menu ul{
+                background: #f4f0b9;
+                list-style-type: none;
+                text-align: right;
+            }
+            .menume{
+                text-align: center;
+            }
+            #menu li{
+                color: #ccc;
+                display: inline-block;
+                width: 210px;
+                height: 40px;
+                line-height: 40px;
+            }
+            #menu ul li a{
+                color: rgb(159, 101, 185);
+                text-decoration: none;
+                display: block;
+            }
+            #menu ul li a:hover{
+                background: #F1F1F1;
+                color: #0C0A0A;
+            }
+            .menucon{
+                display: none;
+                position: absolute;
+                text-align: center;
+            }
+            .menucon{
+                display: none;
+                width: 210px;
+                height: 40px;
+                line-height: 40px;
+                position: absolute;
+            }
+            .menucon a{
+                background-color: #ccc;
+            }
+            .menume:hover .menucon{
+                display: block;
+                background-color: #030303;
+            }
+            .timkiem:hover{
+                background-color: rgb(248, 252, 228);
+            }
+            .sach{
+                float: right;
+                border: 2px solid black;
+                padding: 7px;
+            }
+            #footer{
+                padding: 6px;
+                color: #fff;
+                background-color: rgb(159, 101, 185);
+                text-align: center;
+            }
+            .col-1{width: 8.33%;}
+            .col-2{width: 16.66%;}
+            .col-3{width: 25%;}
+            .col-4{width: 33.33%;}
+            .col-5{width: 41.66%;}
+            .col-6{width: 50%;}
+            .col-7{width: 58.33%;}
+            .col-8{width: 66.66%;}
+            .col-9{width: 75%;}
+            .col-10{width: 83.33%;}
+            .col-11{width: 91.66%;}
+            .col-12{width: 100%;}
+            .row::after{
+                clear: both;
+                display: table;
+                content: "";
+            }
+            [class*="col-"]{
+                float: left;
+                padding: 15px;
+            }
+            [class*="col-"]{
+                width: 100%;
+            }
+            @media all and (max-width: 320px){
+                body{
+                    background: #e7e7e7;
+                }
+            }
+            @media only screen and (min-width: 768px){
+                .col-1{width: 8.33%;}.col-2{width: 16.66%;}.col-3{width: 25%;}.col-4{width: 33.33%;}.col-5{width: 41.66%;}.col-6{width: 50%;} .col-7{width: 58.33%;}.col-8{width: 66.66%;}.col-9{width: 75%; float: right;}.col-10{width: 83.33%;}.col-11{width: 91.66%;}.col-12{width: 100%;}
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <div id="header">
+                <h2>BOOKS ONLINE</h2>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li class="menume">
+                        <a>SÁCH GIÁO KHOA</a>
+                        <div class="menucon">
+                            <a href="a">Lớp 6</a>
+                            <a href="a">Lớp 7</a>
+                            <a href="a">Lớp 8</a>
+                        </div>
+                    </li>
+                    <li class="menume">
+                        <a>SÁCH THAM KHẢO</a>
+                        <div class="menucon">
+                            <a href="a">Lớp 6</a>
+                            <a href="a">Lớp 7</a>
+                            <a href="a">Lớp 8</a>
+                        </div>
+                    </li>
+                    <li class="menume">
+                        <a>TẠP CHÍ CHUYÊN NGÀNH</a>
+                        <div class="menucon">
+                            <a href="a">Lớp 6</a>
+                            <a href="a">Lớp 7</a>
+                            <a href="a">Lớp 8</a>
+                        </div>
+                    </li>
+                    <li class="menume">
+                        <a>TRUYỆN THIẾU NHI</a>
+                        <div class="menucon">
+                            <a href="a">Lớp 6</a>
+                            <a href="a">Lớp 7</a>
+                            <a href="a">Lớp 8</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row2">
+                <div id="col-3">
+                    <p>Tìm kiếm:</p>
+                    <input type="search" name="" class="timkiem"/>
+                    <button type="submit">Tìm</button>
+                </div>
+                <div class="col-9">
+                    <div style="margin-right: 18.25%">
+                        <div class="col-3 col-m-6 details">
+                            <div class="sach">
+                                <h3 class="title">Ngữ Văn</h3>
+                                <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                            </div>
+                        </div>
+                        <div class="col-3 col-m-6 details">
+                            <div class="sach">
+                                <h3 class="title">Toán</h3>
+                                <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                            </div></div>
+                            <div class="col-3 col-m-6 details">
+                                <div class="sach">
+                                    <h3 class="title">Toán - STK</h3>
+                                    <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                                </div>
+                            </div>
+                            <div class="col-3 col-m-6 details">
+                                <div class="sach">
+                                    <h3 class="title">Ngữ Văn - STK</h3>
+                                    <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                                </div>
+                            </div>
+                            <div class="col-3 col-m-6 details">
+                                <div class="sach">
+                                    <h3 class="title">Ngữ Văn</h3>
+                                    <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                                </div>
+                            </div>
+                            <div class="col-3 col-m-6 details">
+                                <div class="sach">
+                                    <h3 class="title">Toán</h3>
+                                    <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                            </div></div>
+                            <div class="col-3 col-m-6 details">
+                                <div class="sach">
+                                    <h3 class="title">Toán - STK</h3>
+                                    <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                                </div>
+                            </div>
+                            <div class="col-3 col-m-6 details">
+                                <div class="sach">
+                                    <h3 class="title">Ngữ Văn - STK</h3>
+                                    <img src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/i/m/img196.u547.d20160423.t095350.jpg" alt="pictures" srcset="" width="190px">
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <p>Design by Hien</p>
+        </div>
+    </body>
+</html>
