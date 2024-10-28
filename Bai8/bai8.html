@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Bài 8</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                width: 100%;
+            }
+            header {
+                width: 70%;
+                margin: 50px auto;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 5px;
+            }
+            table tr:nth-child(even) {
+                background-color: rgb(221, 210, 210);
+            }
+            table tr:nth-child(odd) {
+            background-color:#fff;
+            }
+            section {
+                width: 30%;
+                margin: 50px;
+                padding: 40px;
+                float: right;
+                margin-right: 205px;
+                border: 1px solid black;
+            }
+            span {
+                width: 30%;
+                float: left;
+                margin-bottom: 20px;
+            }
+            input {
+                width: 65%;
+                margin-bottom: 20px;
+                height: 25px;
+            }
+            #btn {
+                padding: 3px;
+                margin-right: 40px;
+                float: right;
+            }
+        </style>
+        <script>
+            const table = document.getElementById("mytable");
+
+            for (let i = 0; i < n; i++) {
+            const row = table.insertRow();
+
+            for (let j = 0; j < 4; j++) {
+                const cell = row.insertCell();
+                cell.textContent = `Hàng ${i + 1}, Cột ${j}`;
+            }
+            }
+            const data = [
+            ["1", "Core i3 7100", "Intel", "20-11 -2011", 3450000],
+            ["2", "Core i5 4430", "Intel", "21-8-2012", 4530000]
+            ];
+
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data[i].length; j++) {
+                    table.rows[i].cells[j].textContent = data[i][j];
+                }
+            }
+            /*data = {
+                STT: Int32Array,
+                Ten: String,
+                Hang: String,
+                NgaySX: Date,
+                Gia: Int32Array
+            };
+
+            var dulieu = [{
+                    STT: 1,
+                    Ten: 'Core i3 7100',
+                    Hang: 'Intel',
+                    NgaySX: '20-11 -2011',
+                    Gia: 3450000
+                },
+                {
+                    STT: 2,
+                    Ten: 'Core i5 4430',
+                    Hang: 'Intel',
+                    NgaySX: '21-8-2012',
+                    Gia: 4530000
+                }
+            ];
+
+            var table = document.getElementById('mytable');
+*/
+            function addData(element) {
+                var row = table.insertRow();
+                row.insertCell().innerHTML = element.STT;
+                row.insertCell().innerHTML = element.Ten;
+                row.insertCell().innerHTML = element.Hang;
+                row.insertCell().innerHTML = element.NgaySX;
+                row.insertCell().innerHTML = formatMoneyVND(element.Gia);
+            }
+
+            function myFunction() {
+                data.forEach(function(element) {
+                    addData(element);
+                }, this);
+            }
+
+            function them() {
+                if (document.getElementById('Ten').value == "") {
+                    alert("Nhập tên.");
+                    document.getElementById('Ten').focus();
+                } else if (document.getElementById('Hang').value == "") {
+                    alert("Nhập hãng sản xuất.");
+                    document.getElementById('Hang').focus();
+                } else if (document.getElementById('NgaySX').value == "") {
+                    alert("Nhập ngày sản xuất.");
+                    document.getElementById('NgaySX').focus();
+                } else if (document.getElementById('Gia').value == "") {
+                    alert("Nhập giá.");
+                    document.getElementById('Gia').focus();
+                } else if (parseInt(document.getElementById('Gia').value) == "NaN") {
+                    alert("Nhập sai định dạng giá.");
+                    document.getElementById('Gia').focus();
+                } else if (Date.parse(document.getElementById('NgaySX').value) > Date.now()) {
+                    alert("Ngày sản xuất không được lớn hơn ngày hiện tại.");
+                    document.getElementById('NgaySX').focus();
+                } else {
+                    var check = false;
+                    data.forEach(function(e) {
+                        if (e.Ten == document.getElementById('Ten').value) {
+                            check = true;
+                            alert("Trùng tên.");
+                            document.getElementById('Ten').focus();
+                        }
+                    }, this);
+                    if (check == false) {
+                        var vxl = {
+                            STT: data.length + 1,
+                            Ten: document.getElementById('Ten').value,
+                            Hang: document.getElementById('Hang').value,
+                            NgaySX: document.getElementById('NgaySX').value,
+                            Gia: parseInt(document.getElementById('Gia').value)
+                        };
+                        data.push(vxl);
+                        addData(vxl);
+                        huy();
+                    }
+                }
+            }
+
+            function formatMoneyVND(money) {
+                if (money == 0) {
+                    return 0;
+                }
+                var tmp = money.toString().split('').reverse().join('');
+                var a = [];
+                var len = tmp.length;
+                var b = true;
+                while (b) {
+                    if (tmp.indexOf(",") > 0) {
+                        tmp = tmp.replace(",", "");
+                        b = true;
+                    } else {
+                        b = false;
+                    }
+                }
+                b = true;
+                while (b) {
+                    len = tmp.length;
+                    if (len % 3 != 0) {
+                        tmp = tmp.toString() + '0';
+                        b = true;
+                    } else {
+                        b = false;
+                    }
+                }
+                for (var i = 0; i < tmp.length; i += 3) {
+                    a.push(tmp[i] + tmp[i + 1] + tmp[i + 2]);
+                }
+                tmp = a.toString().split('').reverse().join('');
+                b = true;
+                while (b) {
+                    if (tmp[0] == 0 || tmp[0] == ',') {
+                        tmp = tmp.substr(1);
+                        b = true;
+                    } else {
+                        b = false;
+                    }
+                }
+                for (var index = 0; index < tmp.length; index++) {
+                    if (tmp[index] == ',')
+                        tmp = tmp.replace(',', '.');
+                }
+                return tmp;
+            }
+            function table(){
+                var tenVXL = document.getElementById('txtTenVXL').value.trim();
+                var hangSX = document.getElementById('txtHang').value.trim();
+                var ngayRaMat = document.getElementById('txtNgayramat').value.trim();
+                var gia = document.getElementById('txtGia').value.trim();
+
+                // Kiểm tra nếu ít nhất một ô nhập trống
+                if (tenVXL === '' || hangSX === '' || ngayRaMat === '' || gia === '') {
+                    alert("Vui lòng nhập đầy đủ thông tin!");
+                    return;
+                }
+
+                // Kiểm tra xem TeenVXL và Hãng có tồn tại chưa
+                if (kiemTraTrungLap(tenVXL, hangSX)) {
+                    alert("Tên VXL và Hãng đã tồn tại!");
+                    return;
+                }
+
+                if (checkGiongnhau(tenVXL, hangSX)){
+                    alert("Tên VXL và Hãng không được giống nhau!");
+                    return;
+                }
+
+                var tbl = document.getElementById("table1");
+
+                var currentDate = new Date();
+                currentDate.setHours(0, 0, 0, 0);
+
+                var enteredDate = new Date(document.getElementById('txtNgayramat').value);
+
+                if (enteredDate < currentDate) {
+                    alert("Ngày ra mắt không được trước ngày hiện tại.");
+                    return;
+                }
+
+                var row = tbl.insertRow(tbl.rows.length);
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+
+                cell1.innerHTML = tbl.rows.length - 1;
+                cell2.innerHTML = document.getElementById('txtTenVXL').value;
+                cell3.innerHTML = document.getElementById('txtHang').value;
+
+                // Chuyển định dạng ngày từ yyyy-mm-dd sang dd/mm/yyyy
+                var rawDate = document.getElementById('txtNgayramat').value;
+                var formattedDate = rawDate.split('-').reverse().join('/');
+                cell4.innerHTML = formattedDate;
+
+                // Định dạng giá và thêm vào ô
+                var formattedGia = parseFloat(document.getElementById('txtGia').value).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+                formattedGia = formattedGia.replace("₫", ""); // Loại bỏ chữ "đ" nếu có
+                cell5.innerHTML = formattedGia;
+                clearInputs();
+            }
+            function checkGiongnhau(tenVXL, hangSX){
+                //var checkTenVXL = document.getElementById('txtTenVXL').trim().toLowerCase();
+                //var checkHangSX = document.getElementById('txtHang').trim().toLowerCase();
+                if(tenVXL.toLowerCase()===hangSX.toLowerCase()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            function kiemTraTrungLap(tenVXL, hangSX) {
+                var tbl = document.getElementById("table1");
+                for (var i = 1; i < tbl.rows.length; i++) { // Bắt đầu từ hàng thứ nhất (bỏ qua hàng tiêu đề)
+                    var existingTenVXL = tbl.rows[i].cells[1].innerHTML.trim().toLowerCase();
+                    var existingHangSX = tbl.rows[i].cells[2].innerHTML.trim().toLowerCase();
+
+                    if (existingTenVXL === tenVXL.toLowerCase() && existingHangSX === hangSX.toLowerCase()) {
+                        return true; // TeenVXL và Hãng trùng nhau
+                    }
+                }
+                return false; // Không có trùng lặp
+            }
+
+            function huy() {
+                document.getElementById('Ten').value = "";
+                document.getElementById('Hang').value = "";
+                document.getElementById('NgaySX').value = "";
+                document.getElementById('Gia').value = "";
+            }
+        </script>
+    </head>
+    <body onload="myFunction()">
+        <header>
+            <table id="mytable">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên VXL</th>
+                    <th>Hãng sx</th>
+                    <th>Ngày ra mắt</th>
+                    <th>Giá (vnđ)</th>
+                </tr>
+            </table>
+            <br>
+        </header>
+        <section>
+            <span>Tên VXL</span>
+            <input type="text" id="Ten">
+            <span>Hãng</span>
+            <input type="text" id="Hang">
+            <span>Ngày ra mắt</span>
+            <input type="date" id="NgaySX">
+            <span>Giá</span>
+            <input type="text" id="Gia">
+            <button id="btn" onclick="huy()">Huỷ</button>
+            <button id="btn" onclick="them()">Thêm</button>
+        </section>
+    </body>
+</html>
