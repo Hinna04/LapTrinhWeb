@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Danh sách Hãng sản xuất CPU</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                width: 100%;
+                line-height: 35px;
+            }
+            section{
+                width: 320px;
+                margin: 100px auto;
+                padding: 35px;
+                border: 1px solid black;
+            }
+            #danhsach{
+                width: 30%;
+                height: 25px;
+                float: right;
+                border: 1px solid black;
+            }
+            input{
+                width: 80%;
+                height: 25px;
+                float: right;
+                border: 1px solid black;
+            }
+            button{
+                padding: 3px;
+                margin-right: 20px;
+                float: right;
+            }
+        </style>
+        <script>
+            var countThemmoi = 0;
+            var dem = 1;
+            function myFunction() {
+                var options = ['Intel', 'AMD', 'SQ1', 'SQ2'];
+                var select = document.getElementById("ddlDanhsachhangsx");
+
+                options.forEach(
+                    function (o) {
+                        o = o.trim();
+                        if (o != "") {
+                            var option = document.createElement("option");
+                            option.text = o;
+                            select.add(option);
+                        }
+                    }, this
+                );
+            }/*
+            function them() {
+                var button = document.getElementById('btnThem');
+                var texth = document.getElementById('txtHang');
+                var dllh = document.getElementById('lblHang');
+                var selectElement = document.getElementById('ddlDanhsachhangsx');
+                if(texth.style.display === "none" || dllh.style.display === "none"){
+                    document.getElementById('lblHang').value = '';
+                    texth.style.display = "block";
+                    dllh.style.display = "block";
+                    button.textContent = "Lưu";
+                    countThemmoi++;
+                }
+                else {
+                    var dll = document.getElementById('lblHang').value;
+                    if (dll.trim() !== "") {
+                        var option = document.createElement("option");
+                        option.value = dll;
+                        option.text = dll;
+                        selectElement.add(option);
+                        dem++;
+                    }
+                    else if(countThemmoi!=0) {
+                        alert("Vui lòng nhập dữ liệu!");
+                        dem=0;
+                    }
+                    if(dem!=0){
+                        texth.style.display = "none";
+                        dllh.style.display = "none";
+                        button.textContent = "Thêm";
+                    }
+                }
+            }
+            function huy() {
+                var button = document.getElementById('btnThem');
+                var texth = document.getElementById('txtHang');
+                var dllh = document.getElementById('lblHang');
+                texth.style.display = "none";
+                dllh.style.display = "none";
+                button.textContent = "Thêm";
+            }*/
+            
+            function them() {
+                document.getElementById('txtHang').removeAttribute("class");
+                document.getElementById('lblHang').removeAttribute("class");
+                document.getElementById('btnLuu').removeAttribute("class");
+                document.getElementById('btnThem').setAttribute("class", "hidden");
+            }
+
+            /*function luu() {
+                var hang = document.getElementById("txtHang").value;
+                if(hang == ""){
+                    alert("Hãy nhập tên hãng!");
+                    document.getElementById("txtHang").focus();
+                }
+                var select = document.getElementById("txtHang");
+                var length = select.options.length;
+                for(i = 0; i < length; i++) {
+                    select.remove(select.options[0]);
+                }
+                mang.forEach(
+                    function (o) {
+                        o = o.trim();
+                        if (o != "") {
+                            var option = document.createElement("option");
+                            option.text = o;
+                            select.add(option);
+                        }
+                    }
+                );
+            }
+*/
+            function luu() {
+                var hangsanxuat = document.getElementById('txtHang').value;
+                document.getElementById('txtHang').value = "";
+                if (hangsanxuat.trim() != "") {
+                    var option = document.createElement("option");
+                    option.text = hangsanxuat;
+                    var select = document.getElementById("ddlDanhsachhangsx").add(option);
+                    document.getElementById('txtHang').setAttribute("class", "hidden");
+                    document.getElementById('lblHang').setAttribute("class", "hidden");
+                    document.getElementById('btnLuu').setAttribute("class", "hidden");
+                    document.getElementById('btnThem').removeAttribute("class");
+                } else {
+                    alert("Tên hãng không được để trống!");
+                    document.getElementById("txtHang").focus();
+                }
+            }
+            function huy(){
+                document.getElementById('txtHang').setAttribute("class", "hidden");
+                document.getElementById('lblHang').setAttribute("class", "hidden");
+                document.getElementById('btnLuu').setAttribute("class", "hidden");
+                document.getElementById('btnThem').removeAttribute("class");
+            }
+        </script>
+    </head>
+    <body onload="myFunction">
+        <section>
+            <label>Danh sách Hãng sản xuất CPU &nbsp;</label>
+            <select name="ddlDanhsachhangsx" id="danhsach" onchange="change()"></select><br>
+            <label name="lblHang" id="lblHang">Hãng</label>
+            <input type="text" name="txtHang" id="txtHang">
+            <button id="btnHuy" onclick="huy()">Huỷ</button>
+            <button id="btnThem" onclick="them()">Thêm</button>
+            <button id="btnLuu" onclick="luu()">Lưu</button>
+        </section>
+    </body>
+</html>
