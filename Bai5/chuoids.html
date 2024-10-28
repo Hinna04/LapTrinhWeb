@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Chuỗi </title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                width: 100%;
+                line-height: 25px;
+            }
+            section{
+                width: 400px;
+                margin: 150px auto;
+                padding: 30px;
+                border: 1px solid black;
+            }
+            #chuoi{
+                width: 290px;
+                height: 25px;
+                border: 1px solid black;
+            }
+            #danhsach{
+                width: 250px;
+                height: 27px;
+                border: 1px solid black;
+            }
+            .btn{
+                padding: 3px;
+                margin-right: 40px;
+                float: right;
+            }
+        </style>
+        <script>
+            function thuchien() {
+                var chuoi = document.getElementById("chuoi").value;
+                if(chuoi == ""){
+                    alert("Hãy nhập nội dung vào chuỗi!");
+                    document.getElementById("chuoi").focus();   // dat con tro
+                }
+                var mang = chuoi.split(",");
+                var select = document.getElementById("danhsach");
+                var length = select.options.length;
+                for(i = 0; i < mang.length; i++) {
+                    select.remove(select.options[0]);
+                }
+                mang.forEach(
+                    function (o) {
+                        o = o.trim();
+                        if (o != "") {
+                            var option = document.createElement("option");
+                            option.text = o;
+                            select.add(option);
+                        }
+                    }
+                );
+            }
+            function change() {
+                var selectBox = document.getElementById("danhsach");
+                var selectedValue = selectBox.options[selectBox.selectedIndex].value;       // lay gia tri dc chon trong selectBox va gan cho selectedValue
+                alert("Bạn đã chọn mục: " + selectedValue);
+            }
+            function huy() {
+                document.getElementById("chuoi").value = "";
+            }
+        </script>
+    </head>
+    <body>
+        <section>
+            <span>Chuỗi&nbsp; &nbsp; &nbsp; &nbsp;</span>
+            <input type="text" name="txtChuoi" id="chuoi">
+            <br><br>
+            <span>Danh sách  </span>
+            <select name="ddlDanhsach" id="danhsach" onchange="change()"></select>
+            <br><br>
+            <button class="btn" onclick="huy()">Huỷ</button> &nbsp; &nbsp; &nbsp;
+            <button class="btn" onclick="thuchien()">Thực hiện</button>    
+        </section>
+    </body>
+</html>
